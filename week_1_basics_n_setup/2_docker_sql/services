@@ -1,0 +1,19 @@
+docker run -it \
+    -e POSTGRES_USER="root" \
+    -e POSTGRES_PASSWORD="root" \
+    -e POSTGRES_DB="ny_taxi" \
+    -v "c:\\Users\\Pauline Le Montagner\\Documents\\data_engineering_zoomcamp_main\\week_1_basics_n_setup\\2_docker_sql\\ny_taxi_postgres_data" \
+    -p 5432:5432 \
+    postgres:13
+
+docker run -it -e POSTGRES_USER="root" -e POSTGRES_PASSWORD="root" -e POSTGRES_DB="ny_taxi" -v "c:\\Users\\Pauline Le Montagner\\Documents\\data_engineering
+
+docker run -it -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" -e PGADMIN_DEFAULT_PASSWORD="root" -p 8080:80 dpage/pgadmin4
+
+docker build -t taxi_ingest:v001 .
+
+URL = "https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv"
+
+docker run -it --network=myapp_default taxi_ingest:v001 --user=root --password=root --host=pgdatabase --port=5432 --db=ny_taxi --table_name=yellow_taxi_trips --url="https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv" 
+
+docker-compose -p myapp up
